@@ -27,7 +27,7 @@ taskController.getTask = async(req,res)=>{
   }
 }
 
-// taskController.getUpdate = async(req,res)=>{
+// taskController.updateTask = async(req,res)=>{
 //   try {
 //     // Task에서 클라이언트에서 요청한 id와 같은 객체를 찾아서 task에 저장.
 //     const task = await Task.findById(req.params.id);
@@ -47,12 +47,12 @@ taskController.getTask = async(req,res)=>{
 // }
 
 // 위 코드 getUpdate로 변환하기
-taskController.getUpdate = async(req,res)=>{
+taskController.updateTask = async(req,res)=>{
   try {
     const { id } = req.params;
     const { task, isComplete } = req.body;
 
-    const updatedTask = await Task.findByIdandUpdate(id,{
+    const updatedTask = await Task.findByIdAndUpdate(id,{
       task : task,
       isComplete: isComplete,
     })
@@ -62,9 +62,9 @@ taskController.getUpdate = async(req,res)=>{
   }
 }
 
-taskController.getDelete = async(req,res)=>{
+taskController.deleteTask = async(req,res)=>{
   try {
-    const deleteItem = await Task.findByIdandDelete(req.params.id);
+    const deleteItem = await Task.findByIdAndDelete(req.params.id);
     res.status(200).json({status:'Ok',data:deleteItem});
   } catch (error) {
     res.status(400).json({status:"fail",error});

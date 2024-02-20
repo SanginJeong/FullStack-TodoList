@@ -6,9 +6,9 @@ router.post('/', taskController.createTask);
 
 router.get('/',taskController.getTask);
 
-router.put('/:id', taskController.getUpdate);
+router.put('/:id', taskController.updateTask);
 
-router.delete('/:id', taskController.getDelete);
+router.delete('/:id', taskController.deleteTask);
 
 // router를 다른 데로 내보낸다.
 module.exports = router;
